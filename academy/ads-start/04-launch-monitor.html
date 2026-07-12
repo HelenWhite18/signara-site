@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step 4 · Launch &amp; Monitor — Signara</title>
+<style>
+  :root{--abyss:#141C2E;--slate:#1C2541;--ink:#243058;--violet:#5B3FA0;--violet-l:#9B7FD4;--mustard:#C8960E;--mist:#8FA4C0;--cream:#E8E4D8;--steel:#5A6E8A;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--abyss);color:var(--cream);font-family:Georgia,serif;}
+  .wrap{max-width:860px;margin:0 auto;padding:56px 32px 40px;}
+  .eyebrow{color:var(--mustard);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;margin-bottom:16px;}
+  .progress{display:flex;gap:8px;margin-bottom:28px;}
+  .progress span{height:3px;flex:1;background:var(--mustard);}
+  h1{font-weight:300;font-size:34px;letter-spacing:2px;margin-bottom:12px;}
+  .why{color:var(--mist);font-style:italic;font-size:16px;line-height:1.6;margin-bottom:40px;max-width:640px;}
+  .sec{margin-bottom:40px;}
+  .sec-head{font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:var(--cream);padding-bottom:10px;border-bottom:1px solid var(--ink);margin-bottom:18px;}
+  .sec-head small{color:var(--steel);text-transform:none;letter-spacing:normal;font-style:italic;font-size:13px;margin-left:10px;}
+  ul.pts{list-style:none;}
+  ul.pts li{padding:10px 0 10px 24px;position:relative;font-size:15px;line-height:1.6;border-bottom:1px solid rgba(36,48,88,.5);}
+  ul.pts li::before{content:"—";position:absolute;left:0;color:var(--mustard);}
+  ul.pts .d{color:var(--mist);display:block;font-size:14px;margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:8px;}
+  th{text-align:left;color:var(--steel);font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 12px 8px 0;border-bottom:1px solid var(--ink);}
+  td{padding:11px 12px 11px 0;border-bottom:1px solid rgba(36,48,88,.5);vertical-align:top;line-height:1.55;}
+  td.k{color:var(--cream);width:200px;}
+  td.v{color:var(--mist);}
+  .g-tag{color:var(--mustard);font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+  .m-tag{color:var(--violet-l);font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+  .rhythm{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:44px;}
+  .r-cell{background:var(--slate);border:1px solid var(--ink);padding:20px;}
+  .r-cell .t{color:var(--mustard);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;margin-bottom:10px;}
+  .r-cell p{font-size:13.5px;line-height:1.6;color:var(--mist);}
+  .r-cell b{color:var(--cream);font-weight:400;}
+  .warn{background:var(--slate);border:1px solid var(--ink);padding:18px 22px;margin:8px 0 44px;font-size:14px;line-height:1.6;color:var(--mist);}
+  .warn .t{color:var(--cream);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;display:block;margin-bottom:8px;}
+  .hook{border-left:2px solid var(--mustard);background:var(--slate);padding:18px 22px;margin:0 0 44px;}
+  .hook .t{color:var(--mustard);font-size:10px;letter-spacing:3.2px;text-transform:uppercase;display:block;margin-bottom:8px;}
+  .hook p{font-size:14px;line-height:1.6;color:var(--mist);}
+  .hook em{color:var(--cream);}
+  footer{border-top:1px solid var(--ink);padding:20px 32px;display:flex;justify-content:space-between;max-width:860px;margin:0 auto;}
+  footer a{color:var(--mustard);text-decoration:none;font-size:13px;letter-spacing:1px;}
+  footer .brand{color:var(--steel);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;align-self:center;}
+  @media(max-width:640px){.rhythm{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Signara · Ads Program · Step 4 of 4</div>
+  <div class="progress"><span></span><span></span><span></span><span></span></div>
+  <h1>Launch &amp; Monitor</h1>
+  <p class="why">Launching is the easy click. The discipline is in the two weeks after: not touching what needs time, and not ignoring what needs fixing. Five minutes a week on the right numbers beats an hour a day on the wrong ones.</p>
+
+  <div class="sec">
+    <div class="sec-head">Pre-launch check <small>ten minutes that save a month</small></div>
+    <ul class="pts">
+      <li>Click your own ads' paths end to end.<span class="d">Landing page on a phone → WhatsApp button → does the message arrive? Form → does the notification reach you? A broken step here means paying for leads you never see.</span></li>
+      <li>Verify conversions fire.<span class="d">Google Tag Assistant / Meta test events. "It's probably tracking" is how budgets die quietly.</span></li>
+      <li>Confirm daily budgets and end dates.<span class="d">Both platforms default to "run forever". Set a calendar reminder for the 4-week review before you launch, not after.</span></li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">The numbers that matter <small>ignore everything else, especially "impressions"</small></div>
+    <table>
+      <tr><th>Metric</th><th>What it tells you</th></tr>
+      <tr><td class="k">Cost per enquiry <span class="g-tag">G</span> <span class="m-tag">M</span></td><td class="v">Total spend ÷ conversations started. The only number that matters weekly. Judge it against what a student is worth: monthly fee × months they typically stay.</td></tr>
+      <tr><td class="k">Enquiry → trial → student rate</td><td class="v">Happens in WhatsApp, not in the ad platform — track it in a simple sheet. If enquiries come but don't convert, the ads are fine and the follow-up isn't.</td></tr>
+      <tr><td class="k">Search terms report <span class="g-tag">G</span></td><td class="v">What people actually typed. Weekly 5-minute read; move irrelevant terms to negatives. This is where Google budgets leak.</td></tr>
+      <tr><td class="k">Frequency <span class="m-tag">M</span></td><td class="v">Above ~3–4, the same parents keep seeing the same ad — refresh the creative or tighten the budget.</td></tr>
+      <tr><td class="k">CTR / CPC</td><td class="v">Diagnostics only. Bad CTR = message problem. Fine CTR + no enquiries = landing page problem. They locate the leak; they are not the goal.</td></tr>
+    </table>
+  </div>
+
+  <div class="rhythm">
+    <div class="r-cell"><div class="t">Days 1–3</div><p><b>Look, don't touch.</b> Confirm delivery, spend, and that test enquiries arrive. No settings changes — both platforms are in learning mode.</p></div>
+    <div class="r-cell"><div class="t">Weekly · 5 min</div><p><b>Dashboard + search terms.</b> Cost per enquiry, new negatives, reply-time check. One change per week maximum, and note what you changed.</p></div>
+    <div class="r-cell"><div class="t">Week 4 · 30 min</div><p><b>Verdict per channel.</b> Cost per student vs student value. Keep, fix, or kill — with numbers, not impressions of impressions.</p></div>
+  </div>
+
+  <div class="warn">
+    <span class="t">The discipline rules</span>
+    Never judge a campaign in its first week. Never change two things at once — you won't know which one worked. Never scale budget more than ~20% at a time. And when a campaign works, the boring move — leaving it alone — is usually the right one.
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">Your dashboard <small>one page, both channels, plain language</small></div>
+    <ul class="pts">
+      <li>Spend, enquiries, and cost per enquiry — per channel, this week vs last.<span class="d">Built in Looker Studio on top of the GA4 + platform data from Step 2. Free, auto-updating, readable on a phone. This replaces logging into two ad platforms and decoding their dashboards.</span></li>
+    </ul>
+  </div>
+
+  <div class="hook">
+    <span class="t">Signara — after the launch</span>
+    <p>Most people don't need an agency — they need <em>the dashboard installed and a monthly 30-minute review</em>: I read the numbers, you keep teaching. Available as a light monthly retainer, cancel anytime. And when campaigns are stable and you want the next channel (GBP reviews engine, seasonal September push, referral system), that's the growth session.</p>
+  </div>
+</div>
+<footer>
+  <a href="03-campaign-settings.html">← Step 3</a>
+  <div class="brand">Signara</div>
+  <a href="index.html">Back to overview</a>
+</footer>
+</body>
+</html>

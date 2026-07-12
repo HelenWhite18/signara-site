@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGNARA — Executive Consultancy. Coming Soon.</title>
+  <meta name="description" content="The comfort layer between business and digital chaos. Signara is being crafted with care. We'll be ready to meet you soon." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://thesignara.com" />
+  <meta property="og:title"       content="SIGNARA — Executive Consultancy. Coming Soon." />
+  <meta property="og:description" content="The comfort layer between business and digital chaos." />
+  <meta property="og:image"       content="https://thesignara.com/og-image.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="SIGNARA — Executive Consultancy. Coming Soon." />
+  <meta name="twitter:description" content="The comfort layer between business and digital chaos." />
+  <meta name="twitter:image"       content="https://thesignara.com/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon"             type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180"     href="/apple-touch-icon.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --abyss:   #141C2E;
+      --slate:   #1C2541;
+      --ink:     #243058;
+      --violet:  #5B3FA0;
+      --mustard: #C8960E;
+      --mist:    #8FA4C0;
+      --cream:   #E8E4D8;
+      --steel:   #5A6E8A;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--abyss);
+      color: var(--cream);
+      font-family: Georgia, 'Times New Roman', serif;
+      overflow-x: hidden;
+    }
+
+    /* ── subtle grid texture ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--ink) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── violet left accent band ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--violet);
+      z-index: 1;
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: clamp(40px, 8vw, 100px) clamp(40px, 10vw, 140px);
+    }
+
+    /* ── eyebrow ── */
+    .eyebrow {
+      font-size: clamp(8px, 1vw, 10px);
+      letter-spacing: 0.3em;
+      color: var(--mustard);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    /* ── headline ── */
+    .headline {
+      font-size: clamp(28px, 4.5vw, 60px);
+      font-weight: 300;
+      line-height: 1.18;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      max-width: 680px;
+      margin-bottom: 20px;
+    }
+    .headline em {
+      color: var(--mustard);
+      font-style: italic;
+    }
+
+    /* ── violet divider ── */
+    .divider {
+      width: clamp(120px, 20vw, 240px);
+      height: 1px;
+      background: var(--violet);
+      margin-bottom: 28px;
+    }
+
+    /* ── body text ── */
+    .body-text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(13px, 1.3vw, 16px);
+      color: var(--mist);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    /* ── contact line ── */
+    .contact {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .contact-label {
+      font-size: clamp(8px, 0.85vw, 10px);
+      letter-spacing: 0.2em;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .contact-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(12px, 1.1vw, 14px);
+      color: var(--mustard);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      padding-bottom: 1px;
+    }
+    .contact-link:hover { border-color: var(--mustard); }
+
+    /* ── footer ── */
+    footer {
+      position: fixed;
+      bottom: 32px;
+      left: clamp(40px, 10vw, 140px);
+      font-size: clamp(7px, 0.75vw, 9px);
+      letter-spacing: 0.2em;
+      color: var(--steel);
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 600px) {
+      .s-mark { display: none; }
+      .page { padding: 48px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+
+    <p class="eyebrow">Something refined is coming</p>
+
+    <!-- Headline -->
+    <h1 class="headline">
+      The comfort layer<br>
+      between business<br>
+      and <em>digital chaos.</em>
+    </h1>
+
+    <div class="divider"></div>
+
+    <!-- Body -->
+    <p class="body-text">
+      Signara is being crafted with care. We'll be ready to meet you soon.
+    </p>
+
+    <!-- Contact -->
+    <div class="contact">
+      <span class="contact-label">Questions</span>
+      <a class="contact-link" href="mailto:alyona@alyonawhite.com">alyona@alyonawhite.com</a>
+    </div>
+
+  </main>
+
+  <footer>© 2026 Signara &nbsp;·&nbsp; thesignara.com</footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Signara",
+    "url": "https://thesignara.com",
+    "logo": "https://thesignara.com/apple-touch-icon.png",
+    "description": "Executive consultancy. The comfort layer between business and digital chaos.",
+    "email": "alyona@alyonawhite.com",
+    "knowsAbout": [
+      "Digital transformation",
+      "Executive leadership",
+      "Business strategy",
+      "Technology consultancy"
+    ],
+    "sameAs": []
+  }
+  </script>
+
+<!-- Cloudflare Pages Analytics -->
+</body>
+</html>
