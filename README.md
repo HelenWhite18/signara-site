@@ -29,9 +29,12 @@ Source reconstructed from the live site on 2026-07-12 (Cloudflare edge injection
    - New project → Custom domains → add `thesignara.com`. Propagation is near-instant since DNS stays on Cloudflare.
    - Keep the old project for a few days as rollback, then delete.
 
-## ⚠ Pulse
+## Pulse
 
-`/pulse` says "Today's brief is being compiled" and carries today's date — something regenerates it daily. If that automation deploys via direct upload / API to the OLD Pages project, it will stop updating the live site after the domain switch. It must instead commit `pulse.html` to this repo (a push auto-deploys). Resolve before switching the domain.
+`/pulse` is served by a **Cloudflare Worker** on a zone route. Worker routes attach to the DNS zone, not the Pages project, so the domain switch does not affect it — Pulse keeps updating.
+
+- `pulse.html` in this repo is a static snapshot (2026-07-12) kept only as a fallback; while the Worker route is active it is shadowed and never served.
+- Before switching, confirm in the Worker's Triggers that it uses a zone route (e.g. `thesignara.com/pulse*`). If Pulse were instead a Pages Function inside the OLD project, it would die with it and must be ported into this repo's `functions/` directory first.
 
 ## Publishing from now on
 
