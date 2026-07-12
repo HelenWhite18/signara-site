@@ -39,8 +39,157 @@
   footer{border-top:1px solid var(--ink);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;max-width:860px;margin:0 auto;width:100%;}
   footer .brand{color:var(--steel);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;}
   footer a{color:var(--mustard);text-decoration:none;font-size:13px;letter-spacing:1px;}
+  .faq{margin-bottom:48px;}
+  .faq .label{color:var(--steel);font-size:11px;letter-spacing:3.2px;text-transform:uppercase;margin-bottom:14px;}
+  .faq details{background:var(--slate);border:1px solid var(--ink);margin-bottom:10px;}
+  .faq details[open]{border-color:var(--mustard);}
+  .faq summary{padding:15px 20px;cursor:pointer;font-size:15px;line-height:1.4;}
+  .faq details p{padding:2px 20px 16px;color:var(--mist);font-size:14px;line-height:1.6;}
   @media(max-width:640px){.steps{grid-template-columns:1fr;}h1{font-size:32px;}}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://thesignara.com/#org",
+   "name": "Signara",
+   "url": "https://thesignara.com/",
+   "email": "alyona@alyonawhite.com",
+   "logo": "https://thesignara.com/apple-touch-icon.png"
+  },
+  {
+   "@type": "Course",
+   "@id": "https://thesignara.com/academy/ads-start/#course",
+   "name": "Paid Ads, End to End",
+   "description": "Google Search and Meta Ads for independent educators — one method, four steps, campaigns live by the end. Built for people who teach, not for marketers.",
+   "url": "https://thesignara.com/academy/ads-start/",
+   "provider": {
+    "@id": "https://thesignara.com/#org"
+   },
+   "isAccessibleForFree": true,
+   "inLanguage": "en",
+   "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "independent educators, tutors, and solo service providers"
+   },
+   "teaches": [
+    "Google Search Ads setup for tutoring services",
+    "Meta Ads for local parent audiences",
+    "Conversion tracking and WhatsApp lead flow",
+    "Campaign budgeting and weekly monitoring"
+   ],
+   "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT4H"
+   },
+   "hasPart": [
+    {
+     "@type": "LearningResource",
+     "position": 1,
+     "name": "Set Up the Accounts",
+     "url": "https://thesignara.com/academy/ads-start/01-setup-accounts.html"
+    },
+    {
+     "@type": "LearningResource",
+     "position": 2,
+     "name": "Create & Connect the Machinery",
+     "url": "https://thesignara.com/academy/ads-start/02-connect-tech.html"
+    },
+    {
+     "@type": "LearningResource",
+     "position": 3,
+     "name": "Prepare & Input Campaigns",
+     "url": "https://thesignara.com/academy/ads-start/03-campaign-settings.html"
+    },
+    {
+     "@type": "LearningResource",
+     "position": 4,
+     "name": "Launch & Monitor",
+     "url": "https://thesignara.com/academy/ads-start/04-launch-monitor.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How much budget do I need to start running ads as a tutor?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Enough that the math works. Know what a student is worth to you (monthly price × how many months they typically stay), then work backwards to what you can pay to acquire one. Most solo tutors can start meaningfully with €5–10 per day on Google Search."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need a website before running ads?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. A single landing page with a contact form or a WhatsApp button is enough to start — Step 2 of this program builds exactly that, plus the tracking behind it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Google Ads or Meta ads — which should I start with?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Google Search first: it catches parents who are already searching for a tutor, so it is the hardest budget to waste. Meta (Facebook and Instagram) comes second, to reach local parents who don't know you exist yet."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How long until ads bring students?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Google Search can produce enquiries within days because the intent already exists. Still, judge the campaign on two to four weeks of data, not on the first 48 hours."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need marketing experience to follow this program?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. It is built for people who teach, not for marketers. Every campaign setting is decided on paper first, in plain language, then entered into each platform step by step."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When should I NOT run ads?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If you have no room for more students, or if your pricing can't support what a new student costs to acquire, ads will only burn money. Fix the offer first — a free Google Business Profile and a referral routine are better uses of that budget."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Signara",
+     "item": "https://thesignara.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Academy",
+     "item": "https://thesignara.com/academy/ads-start/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Paid Ads, End to End"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -84,6 +233,34 @@
       <li>Tracking that shows which euro produced which student</li>
       <li>A one-page dashboard you can read in five minutes a week</li>
     </ul>
+  </div>
+
+  <div class="faq">
+    <div class="label">Frequently asked questions</div>
+    <details>
+      <summary>How much budget do I need to start running ads as a tutor?</summary>
+      <p>Enough that the math works. Know what a student is worth to you (monthly price × how many months they typically stay), then work backwards to what you can pay to acquire one. Most solo tutors can start meaningfully with €5–10 per day on Google Search.</p>
+    </details>
+    <details>
+      <summary>Do I need a website before running ads?</summary>
+      <p>No. A single landing page with a contact form or a WhatsApp button is enough to start — Step 2 of this program builds exactly that, plus the tracking behind it.</p>
+    </details>
+    <details>
+      <summary>Google Ads or Meta ads — which should I start with?</summary>
+      <p>Google Search first: it catches parents who are already searching for a tutor, so it is the hardest budget to waste. Meta (Facebook and Instagram) comes second, to reach local parents who don't know you exist yet.</p>
+    </details>
+    <details>
+      <summary>How long until ads bring students?</summary>
+      <p>Google Search can produce enquiries within days because the intent already exists. Still, judge the campaign on two to four weeks of data, not on the first 48 hours.</p>
+    </details>
+    <details>
+      <summary>Do I need marketing experience to follow this program?</summary>
+      <p>No. It is built for people who teach, not for marketers. Every campaign setting is decided on paper first, in plain language, then entered into each platform step by step.</p>
+    </details>
+    <details>
+      <summary>When should I NOT run ads?</summary>
+      <p>If you have no room for more students, or if your pricing can't support what a new student costs to acquire, ads will only burn money. Fix the offer first — a free Google Business Profile and a referral routine are better uses of that budget.</p>
+    </details>
   </div>
 </div>
 <footer>
