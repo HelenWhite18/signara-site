@@ -1,0 +1,36 @@
+# SIGNARA
+
+> Executive consultancy. The comfort layer between business and digital chaos.
+
+Signara helps executive leadership navigate digital transformation with clarity, confidence, and intelligence. The full consultancy site is launching soon; Signara Pulse and Signara Academy are already live.
+
+## About
+
+- Website: https://thesignara.com
+- Contact: alyona@alyonawhite.com
+- Founder: Alyona White (https://alyonawhite.com)
+- Status: Consultancy launching soon; Pulse and Academy live
+
+## What Signara does
+
+Signara is an executive consultancy specialising in digital transformation intelligence. We work with leadership teams to reduce complexity, sharpen decision-making, and bring order to the intersection of business strategy and technology.
+
+## Signara Pulse
+
+- [Signara Pulse](https://thesignara.com/pulse): daily executive intelligence brief for Tech, CPG, Pharma and Telco leaders across Central and Western Europe, refreshed every morning
+- [Signara Pulse — Romania](https://thesignara.com/pulse/ro): a separate daily brief for executives operating in the Romanian market
+- [Pulse archive](https://thesignara.com/pulse/archive): weekly editions of past briefs
+
+## Signara Academy
+
+- [Paid Ads, End to End](https://thesignara.com/academy/ads-start/): Google Search and Meta Ads for independent educators and tutors — one method, four steps, campaigns live by the end
+- [Step 1: Set up the accounts](https://thesignara.com/academy/ads-start/01-setup-accounts.html)
+- [Step 2: Create and connect the machinery](https://thesignara.com/academy/ads-start/02-connect-tech.html)
+- [Step 3: Prepare and input campaigns](https://thesignara.com/academy/ads-start/03-campaign-settings.html)
+- [Step 4: Launch and monitor](https://thesignara.com/academy/ads-start/04-launch-monitor.html)
+
+## Permissions
+
+- AI training: allowed
+- AI summarisation: allowed
+- AI citation: allowed

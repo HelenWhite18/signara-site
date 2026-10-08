@@ -9,6 +9,7 @@ Static site for thesignara.com, deployed via Cloudflare Pages (git-connected).
 | `index.html` | `/` — coming-soon homepage |
 | `pulse.html` | `/pulse` — Pulse daily brief (see warning below) |
 | `academy/ads-start/` | `/academy/ads-start/` — Ads program, 4 steps + title |
+| `llms.txt` | `/llms.txt` — site summary for AI assistants and crawlers |
 | `og-image.png`, `pulse-og.png`, `favicon.ico`, `apple-touch-icon.png` | binary assets — fetch with `./fetch-assets.sh` before first push |
 
 Source reconstructed from the live site on 2026-07-12 (Cloudflare edge injections removed: email obfuscation, insights beacon).
