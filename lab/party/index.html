@@ -102,6 +102,8 @@
   .pick .txt { min-width: 0; display: flex; flex-direction: column; }
   .pick .k { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); }
   .pick .v { font-family: var(--f-serif); font-size: 1.45rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .pick .list { font-size: 0.9rem; color: var(--mist); overflow-wrap: anywhere; }
+  .fallback { flex-basis: 100%; min-height: 7em; background: var(--ground); color: var(--white); border: 1px solid var(--hairline); border-radius: 0; font: 14px/1.5 var(--f-sans); padding: 10px; resize: vertical; }
   .pick .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
   .btn {
     min-height: 44px; padding: 0 20px; border-radius: 0; border: 2px solid var(--lavender);
@@ -121,13 +123,13 @@
 <div class="wrap">
   <header>
     <span class="eyebrow">Signara Lab</span>
-    <h1>Pick the party <em>evening</em>.</h1>
+    <h1>Pick the evenings that <em>work</em>.</h1>
     <p class="lede" id="lede"></p>
     <ul class="windows" id="windows" aria-label="Free evenings"></ul>
     <div class="legend" aria-hidden="true">
       <span><i class="sw open"></i>Free</span>
       <span><i class="sw off"></i>Not available</span>
-      <span><i class="sw pick"></i>Your pick</span>
+      <span><i class="sw pick"></i>Your picks</span>
     </div>
   </header>
 
@@ -135,14 +137,16 @@
 
   <section class="pick" aria-label="Your chosen evening">
     <div class="txt">
-      <span class="k">Your evening</span>
-      <span class="v" id="pickText">Not chosen yet</span>
+      <span class="k">Your evenings</span>
+      <span class="v" id="pickText">None chosen yet</span>
+      <span class="list" id="pickList"></span>
     </div>
     <div class="actions">
-      <button class="link" id="clearBtn" type="button" disabled>Clear</button>
-      <button class="btn" id="copyBtn" type="button" disabled>Copy my pick</button>
+      <button class="link" id="clearBtn" type="button" disabled>Clear all</button>
+      <button class="btn" id="copyBtn" type="button" disabled>Copy my picks</button>
     </div>
     <p class="status" id="status" role="status" aria-live="polite"></p>
+    <textarea class="fallback" id="fallbackBox" readonly hidden aria-label="Your evenings as text"></textarea>
   </section>
 </div>
 
@@ -184,7 +188,7 @@
   };
 
   document.getElementById('lede').textContent =
-    open + ' evenings are free between ' + fmtDM.format(START) + ' and ' + fmtDM.format(END) + '. Tap one to choose it.';
+    open + ' evenings are free between ' + fmtDM.format(START) + ' and ' + fmtDM.format(END) + '. Tap every one that suits you.';
 
   var wl = document.getElementById('windows');
   var lab = document.createElement('li'); lab.className = 'label'; lab.textContent = 'Free'; wl.appendChild(lab);
@@ -216,43 +220,55 @@
     m++; if (m > 11) { m = 0; y++; }
   }
 
-  /* Selection */
-  var picked = null;
+  /* Selection: any number of free evenings, copied as one list */
+  var picked = new Set();
   var pickText = document.getElementById('pickText');
+  var pickList = document.getElementById('pickList');
   var copyBtn = document.getElementById('copyBtn');
   var clearBtn = document.getElementById('clearBtn');
   var statusEl = document.getElementById('status');
+  var fallbackBox = document.getElementById('fallbackBox');
 
   var parseKey = function (k) { var p = k.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); };
-  var sentence = function () { return 'My pick for the party evening: ' + fmtLongYear.format(parseKey(picked)); };
+  var fmtShort = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  var sorted = function () { return Array.from(picked).sort(); };
+  var message = function () {
+    var lines = sorted().map(function (k) { return '- ' + fmtLongYear.format(parseKey(k)); });
+    return 'These evenings work for me:\n' + lines.join('\n');
+  };
 
   function render() {
     monthsEl.querySelectorAll('.day:not(:disabled)').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.dataset.key === picked ? 'true' : 'false');
+      b.setAttribute('aria-pressed', picked.has(b.dataset.key) ? 'true' : 'false');
     });
-    pickText.textContent = picked ? fmtLong.format(parseKey(picked)) : 'Not chosen yet';
-    copyBtn.disabled = !picked; clearBtn.disabled = !picked;
+    var n = picked.size;
+    pickText.textContent = n === 0 ? 'None chosen yet' : (n === 1 ? '1 evening' : n + ' evenings');
+    pickList.textContent = sorted().map(function (k) { return fmtShort.format(parseKey(k)); }).join(', ');
+    copyBtn.disabled = n === 0; clearBtn.disabled = n === 0;
     statusEl.textContent = '';
+    fallbackBox.hidden = true;
   }
 
   monthsEl.addEventListener('click', function (e) {
     var b = e.target.closest('.day');
     if (!b || b.disabled) return;
-    picked = (picked === b.dataset.key) ? null : b.dataset.key;
+    if (picked.has(b.dataset.key)) { picked.delete(b.dataset.key); } else { picked.add(b.dataset.key); }
     render();
   });
-  clearBtn.addEventListener('click', function () { picked = null; render(); });
+  clearBtn.addEventListener('click', function () { picked.clear(); render(); });
 
   copyBtn.addEventListener('click', function () {
-    if (!picked) return;
-    var text = sentence();
+    if (!picked.size) return;
+    var text = message();
+    var n = picked.size;
     var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(pickText);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      statusEl.textContent = 'Copy was blocked here. Your date is selected, so you can copy it manually.';
+      fallbackBox.value = text; fallbackBox.hidden = false; fallbackBox.focus(); fallbackBox.select();
+      statusEl.textContent = 'Copy was blocked here. Your list is selected below, so you can copy it manually.';
     };
     try {
-      navigator.clipboard.writeText(text).then(function () { statusEl.textContent = 'Copied: ' + text; }, fallback);
+      navigator.clipboard.writeText(text).then(function () {
+        statusEl.textContent = 'Copied ' + n + (n === 1 ? ' evening' : ' evenings') + '. Paste them where you need them.';
+      }, fallback);
     } catch (err) { fallback(); }
   });
 
