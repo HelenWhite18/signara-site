@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}</style>
+<title>Party Evening</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+  /* Layout: Signara Lab. Deep violet ground, square frames, hairline structure, one overlapping frame on the pick. */
+  :root {
+    --ground: #17122D;      /* ground-lab */
+    --panel: #30235C;       /* violet-deep */
+    --violet: #5B3FA0;
+    --bright: #7354C6;      /* violet-bright */
+    --lavender: #9D8DE0;
+    --mist: #8FA4C0;
+    --white: #FFFFFF;
+    --hairline: #36415A;
+    --hatch: #46527A;
+    --off-ink: #7E88A6;
+    --f-serif: Baskervville, Baskerville, "Times New Roman", serif;
+    --f-sans: "Nunito Sans", "Avenir Next", Avenir, Arial, sans-serif;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--white);
+    font-family: var(--f-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    padding-block: 44px 0;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 1040px; margin-inline: auto; display: flex; flex-direction: column; gap: 32px; }
+
+  header { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 3.2px; text-transform: uppercase; color: var(--lavender); }
+  h1 {
+    font-family: var(--f-serif);
+    font-weight: 400;
+    font-size: clamp(2.3rem, 9vw, 3.9rem);
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--lavender); }
+  .lede { margin: 0; color: var(--mist); max-width: 40rem; text-wrap: pretty; }
+
+  .windows { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0; padding: 0; list-style: none; }
+  .windows .label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); margin-right: 4px; }
+  .windows li.win { background: var(--panel); color: var(--white); font-weight: 700; padding: 4px 12px; font-variant-numeric: tabular-nums; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); }
+  .legend span { display: inline-flex; align-items: center; gap: 10px; }
+  .sw { width: 18px; height: 18px; flex: none; }
+  .sw.open { background: var(--panel); }
+  .sw.off { background: repeating-linear-gradient(135deg, transparent 0 4px, var(--hatch) 4px 5px); outline: 1px solid var(--hairline); outline-offset: -1px; }
+  .sw.pick { background: var(--lavender); }
+
+  .months { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 36px 44px; }
+  .month { min-width: 0; display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid var(--hairline); }
+  .month h2 { font-family: var(--f-serif); font-weight: 400; font-size: 1.6rem; line-height: 1.1; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
+  .dow { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mist); padding-bottom: 2px; }
+
+  .day {
+    position: relative;
+    height: 46px;
+    border: 0;
+    border-radius: 0;
+    background: var(--panel);
+    color: var(--white);
+    font: 700 1rem/1 var(--f-sans);
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    padding: 0;
+  }
+  .day:hover { outline: 2px solid var(--lavender); outline-offset: -2px; }
+  .day:focus-visible { outline: 3px solid var(--lavender); outline-offset: 2px; }
+  .day:disabled {
+    background: repeating-linear-gradient(135deg, transparent 0 5px, var(--hatch) 5px 6px);
+    color: var(--off-ink);
+    font-weight: 400;
+    text-decoration: line-through;
+    cursor: not-allowed;
+    outline: none;
+  }
+  .day[aria-pressed="true"] { background: var(--lavender); color: var(--ground); outline: 2px solid var(--bright); outline-offset: 2px; }
+  .day[aria-pressed="true"]::after { content: "\2713"; font-size: 0.62rem; line-height: 1; }
+  .blank { height: 46px; }
+
+  .pick {
+    position: sticky;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+    margin-top: 4px;
+    margin-bottom: 8px;
+    background: var(--panel);
+    border: 1px solid var(--bright);
+    padding: 14px 18px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px;
+  }
+  .pick .txt { min-width: 0; display: flex; flex-direction: column; }
+  .pick .k { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); }
+  .pick .v { font-family: var(--f-serif); font-size: 1.45rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .pick .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+  .btn {
+    min-height: 44px; padding: 0 20px; border-radius: 0; border: 2px solid var(--lavender);
+    background: var(--lavender); color: var(--ground); font: 700 0.95rem var(--f-sans); letter-spacing: 0.5px; cursor: pointer;
+  }
+  .btn:disabled { background: transparent; color: var(--off-ink); border-color: var(--hairline); cursor: not-allowed; }
+  .btn:focus-visible, .link:focus-visible { outline: 3px solid var(--lavender); outline-offset: 2px; }
+  .link { min-height: 44px; padding: 0 6px; background: none; border: 0; color: var(--white); font: 600 0.92rem var(--f-sans); text-decoration: underline; cursor: pointer; }
+  .link:disabled { color: var(--off-ink); text-decoration: none; cursor: not-allowed; }
+  .status { flex-basis: 100%; margin: 0; font-size: 0.85rem; color: var(--mist); min-height: 1.2em; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .day { transition: background-color 0.12s ease; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Signara Lab</span>
+    <h1>Pick the party <em>evening</em>.</h1>
+    <p class="lede" id="lede"></p>
+    <ul class="windows" id="windows" aria-label="Free evenings"></ul>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw open"></i>Free</span>
+      <span><i class="sw off"></i>Not available</span>
+      <span><i class="sw pick"></i>Your pick</span>
+    </div>
+  </header>
+
+  <main class="months" id="months"></main>
+
+  <section class="pick" aria-label="Your chosen evening">
+    <div class="txt">
+      <span class="k">Your evening</span>
+      <span class="v" id="pickText">Not chosen yet</span>
+    </div>
+    <div class="actions">
+      <button class="link" id="clearBtn" type="button" disabled>Clear</button>
+      <button class="btn" id="copyBtn" type="button" disabled>Copy my pick</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var key = function (d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+  var mk = function (y, m, d) { return new Date(y, m - 1, d); };
+  var nextDay = function (d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1); };
+
+  /* Range shown, and the days that are taken. Edit here to change availability. */
+  var START = mk(2026, 10, 15);
+  var END = mk(2027, 1, 31);
+  var BLOCKED = [
+    [mk(2026, 10, 21), mk(2026, 10, 23)],
+    [mk(2026, 10, 30), mk(2026, 11, 7)],
+    [mk(2026, 11, 18), mk(2026, 12, 4)]
+  ];
+  var isBlocked = function (d) { return BLOCKED.some(function (r) { return d >= r[0] && d <= r[1]; }); };
+
+  var fmtLong = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  var fmtLongYear = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  var fmtMonth = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' });
+  var fmtDM = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long' });
+  var monShort = function (d) { return new Intl.DateTimeFormat('en-GB', { month: 'short' }).format(d); };
+
+  /* Free runs and count */
+  var runs = [], open = 0, cur = null;
+  for (var d = new Date(START); d <= END; d = nextDay(d)) {
+    if (isBlocked(d)) { cur = null; continue; }
+    open++;
+    if (cur && key(nextDay(cur.end)) === key(d)) { cur.end = d; } else { cur = { start: d, end: d }; runs.push(cur); }
+  }
+  var runLabel = function (r) {
+    var a = r.start, b = r.end;
+    if (key(a) === key(b)) return a.getDate() + ' ' + monShort(a);
+    if (a.getMonth() === b.getMonth()) return a.getDate() + '–' + b.getDate() + ' ' + monShort(b);
+    return a.getDate() + ' ' + monShort(a) + ' – ' + b.getDate() + ' ' + monShort(b);
+  };
+
+  document.getElementById('lede').textContent =
+    open + ' evenings are free between ' + fmtDM.format(START) + ' and ' + fmtDM.format(END) + '. Tap one to choose it.';
+
+  var wl = document.getElementById('windows');
+  var lab = document.createElement('li'); lab.className = 'label'; lab.textContent = 'Free'; wl.appendChild(lab);
+  runs.forEach(function (r) { var li = document.createElement('li'); li.className = 'win'; li.textContent = runLabel(r); wl.appendChild(li); });
+
+  /* Months */
+  var monthsEl = document.getElementById('months');
+  var dows = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  var y = START.getFullYear(), m = START.getMonth();
+  while (new Date(y, m, 1) <= END) {
+    var sec = document.createElement('section'); sec.className = 'month';
+    var h = document.createElement('h2'); h.textContent = fmtMonth.format(new Date(y, m, 1)); sec.appendChild(h);
+    var grid = document.createElement('div'); grid.className = 'grid';
+    dows.forEach(function (n) { var c = document.createElement('div'); c.className = 'dow'; c.setAttribute('aria-hidden', 'true'); c.textContent = n; grid.appendChild(c); });
+    var lead = (new Date(y, m, 1).getDay() + 6) % 7;
+    for (var i = 0; i < lead; i++) { var b0 = document.createElement('span'); b0.className = 'blank'; b0.setAttribute('aria-hidden', 'true'); grid.appendChild(b0); }
+    var dim = new Date(y, m + 1, 0).getDate();
+    for (var n = 1; n <= dim; n++) {
+      var dt = new Date(y, m, n);
+      if (dt < START || dt > END) { var b1 = document.createElement('span'); b1.className = 'blank'; b1.setAttribute('aria-hidden', 'true'); grid.appendChild(b1); continue; }
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'day'; btn.textContent = String(n); btn.dataset.key = key(dt);
+      var off = isBlocked(dt);
+      btn.setAttribute('aria-label', fmtLong.format(dt) + (off ? ', not available' : ', free'));
+      if (off) { btn.disabled = true; } else { btn.setAttribute('aria-pressed', 'false'); }
+      grid.appendChild(btn);
+    }
+    sec.appendChild(grid); monthsEl.appendChild(sec);
+    m++; if (m > 11) { m = 0; y++; }
+  }
+
+  /* Selection */
+  var picked = null;
+  var pickText = document.getElementById('pickText');
+  var copyBtn = document.getElementById('copyBtn');
+  var clearBtn = document.getElementById('clearBtn');
+  var statusEl = document.getElementById('status');
+
+  var parseKey = function (k) { var p = k.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); };
+  var sentence = function () { return 'My pick for the party evening: ' + fmtLongYear.format(parseKey(picked)); };
+
+  function render() {
+    monthsEl.querySelectorAll('.day:not(:disabled)').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.key === picked ? 'true' : 'false');
+    });
+    pickText.textContent = picked ? fmtLong.format(parseKey(picked)) : 'Not chosen yet';
+    copyBtn.disabled = !picked; clearBtn.disabled = !picked;
+    statusEl.textContent = '';
+  }
+
+  monthsEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.day');
+    if (!b || b.disabled) return;
+    picked = (picked === b.dataset.key) ? null : b.dataset.key;
+    render();
+  });
+  clearBtn.addEventListener('click', function () { picked = null; render(); });
+
+  copyBtn.addEventListener('click', function () {
+    if (!picked) return;
+    var text = sentence();
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(pickText);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      statusEl.textContent = 'Copy was blocked here. Your date is selected, so you can copy it manually.';
+    };
+    try {
+      navigator.clipboard.writeText(text).then(function () { statusEl.textContent = 'Copied: ' + text; }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  render();
+})();
+</script>
